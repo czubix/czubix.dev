@@ -57,6 +57,7 @@ a, span {
 .avatar > img:last-of-type {
     height: 35px;
     width: 35px;
+    background-color: rgba(0, 0, 0, 1);
     position: fixed;
     border: 10px solid #18191c;
     transform: translate(-110px, 210px);

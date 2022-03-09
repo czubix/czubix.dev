@@ -1,1 +1,1 @@
-nasza strona
+muj stron

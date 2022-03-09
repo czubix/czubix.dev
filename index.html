@@ -12,7 +12,7 @@
         <div class="box">
             <div class="background">
                 <div class="avatar">
-                    <img width="200" height="200" src="img/avatar.png" alt="zdjęcie profilowe" ondragstart="return false;" ondrop="return false;">
+                    <img width="200" height="200" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="zdjęcie profilowe" ondragstart="return false;" ondrop="return false;">
                     <img width="35" height="35" src="img/poligon.png" alt="poligon" onclick="poligonFunc();" ondragstart="return false;" ondrop="return false;">
                 </div>
                 <div class="username">czubix<div class="discriminator">#7679</div></div>
@@ -27,7 +27,6 @@
                     <div><span style="background-color:#2f3136;color:#dcddde;">[Bułka/Chleb]</span></div>
                     <div>Szymon, 15 lat, mieszkam w Poznaniu. Właściciel serwera <span onclick="poligonFunc();">poligon</span> i bota <span onclick="cenzuraFunc();">CENZURA</span>. Ucze sie programingowania</div>
                     <div>od 3 lat, gaminguje w <span onclick="robloxFunc();">roblok</span> i tak (to nie gra jak coś). Sterzi to kobieta a index to fajny ludź bo mi pomagał często.</div>
-                    <div>Szukam kolegów (<a href="https://freefriends.cf" target="_blank">freefriends.cf</a>)</div>
                 </div>
                 <div id="links">
                     <div>
@@ -91,7 +90,23 @@
                 </div>
             </div>
         </div>
-
         <script src="js/dzawaskrypt.js"></script>
+        <script>
+            (async () => {
+                const avatar = document.querySelector(".avatar > img")
+                const now = Date.now()
+
+                if (!localStorage.getItem("avatarUrl") || (parseInt(localStorage.getItem("lastFetch")) - now > 5 * 60 * 1000)) {
+                    const data = await (await fetch("https://discord.com/api/invites/DFyFhtESq9")).json()
+
+                    localStorage.setItem("avatarUrl", "https://cdn.discordapp.com/avatars/" + data.inviter.id + "/" + data.inviter.avatar + ".png")
+                    localStorage.setItem("lastFetch", now)
+                }
+
+                avatarUrl = localStorage.getItem("avatarUrl")
+
+                avatar.src = avatarUrl
+            })()
+        </script>
     </body>
 </html>
