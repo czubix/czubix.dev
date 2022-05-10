@@ -59,7 +59,7 @@ roblox.addEventListener("click", () => {
 })
 
 korrumzthegame.addEventListener("click", () => {
-    open("https://korrumzthegame.cf", "_blank").focus()
+    open("https://korrumzthegame.wtf", "_blank").focus()
 })
 
 pornhub.addEventListener("click", () => {
