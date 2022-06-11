@@ -89,7 +89,7 @@
                 const avatar = document.querySelector(".avatar > img")
                 const now = Date.now()
 
-                if (!localStorage.getItem("avatarUrl") || (parseInt(localStorage.getItem("lastFetch")) - now > 5 * 60 * 1000)) {
+                if (!localStorage.getItem("avatarUrl") || (parseInt(now - localStorage.getItem("lastFetch")) > 5 * 60 * 1000)) {
                     const data = await (await fetch("https://discord.com/api/invites/DFyFhtESq9")).json()
 
                     localStorage.setItem("avatarUrl", "https://cdn.discordapp.com/avatars/" + data.inviter.id + "/" + data.inviter.avatar + ".png")
