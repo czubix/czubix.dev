@@ -11,7 +11,6 @@ const cenzura = document.getElementById("cenzura")
 const steam = document.getElementById("steam")
 const roblox = document.getElementById("roblox")
 const korrumzthegame = document.getElementById("korrumzthegame")
-const pornhub = document.getElementById("pornhub")
 const onlyfans = document.getElementById("onlyfans")
 
 aboutmeButton.addEventListener("click", () => {
@@ -60,10 +59,6 @@ roblox.addEventListener("click", () => {
 
 korrumzthegame.addEventListener("click", () => {
     open("https://korrumzthegame.wtf", "_blank").focus()
-})
-
-pornhub.addEventListener("click", () => {
-    open("https://pl.pornhub.com/users/czub1x", "_blank").focus()
 })
 
 onlyfans.addEventListener("click", () => {
