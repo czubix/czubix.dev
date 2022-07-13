@@ -46,7 +46,7 @@ discordPoligon.addEventListener("click", () => {
 })
 
 cenzura.addEventListener("click", () => {
-    open("https://cenzurabot.com", "_blank").focus()
+    open("https://cenzura.poligon.lgbt", "_blank").focus()
 })
 
 steam.addEventListener("click", () => {
