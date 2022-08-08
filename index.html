@@ -13,20 +13,20 @@
             <div class="background">
                 <div class="avatar">
                     <img width="200" height="200" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="zdjęcie profilowe" ondragstart="return false;" ondrop="return false;">
-                    <img width="35" height="35" src="img/poligon.png" alt="poligon" onclick="poligonFunc();" ondragstart="return false;" ondrop="return false;">
+                    <img width="35" height="35" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="poligon" onclick="goTo('discord_poligon');" ondragstart="return false;" ondrop="return false;">
                 </div>
                 <div class="username">czubix<div class="discriminator">#7679</div></div>
             </div>
             <div class="buttons">
-                <div id="aboutme_button" enabled="true">O mnie</div>
-                <div id="links_button" enabled="false">Linki</div>
+                <div id="aboutme_button" onclick="select('aboutme');" enabled="true">O mnie</div>
+                <div id="links_button" onclick="select('links');" enabled="false">Linki</div>
             </div>
             <hr>
             <div class="descriptions">
                 <div id="aboutme">
                     <div><span style="background-color:#2f3136;color:#dcddde;">[He/Them]</span></div>
-                    <div>Szymon, 16 lat, mieszkam w Poznaniu. Właściciel serwera <span onclick="poligonFunc();">poligon</span> i bota <span onclick="cenzuraFunc();">CENZURA</span>. Ucze sie programingowania</div>
-                    <div>od 4 lat, gaminguje w <span onclick="robloxFunc();">roblok</span> i genshin impact i conter strik i inne gówno</div>
+                    <div>Szymon, 16 lat, mieszkam w Poznaniu. Właściciel serwera <span onclick="goTo('discord_poligon');">poligon</span> i bota <span onclick="goTo('cenzura');">CENZURA</span>. Ucze sie programingowania</div>
+                    <div>od 4 lat, gaminguje w <span onclick="goTo('roblox');">roblok</span> i genshin impact i conter strik i inne gówno</div>
                 </div>
                 <div id="links">
                     <div>
@@ -48,7 +48,7 @@
                     </div>
                     <div>
                         <div id="discord_poligon">
-                            <img width="32" height="32" src="img/poligon.png" alt="discord_poligon" style="border-radius:50%;" return false;" ondrop="return false;">
+                            <img width="32" height="32" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="discord_poligon" style="border-radius:50%;" return false;" ondrop="return false;">
                             <div class="links_username">poligon</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
@@ -87,18 +87,25 @@
         <script>
             (async () => {
                 const avatar = document.querySelector(".avatar > img")
+                const icon = document.querySelector(".avatar > img:last-child")
+                const discord_icon = document.querySelector("#discord_poligon > img")
+
                 const now = Date.now()
 
                 if (!localStorage.getItem("avatarUrl") || (parseInt(now - localStorage.getItem("lastFetch")) > 5 * 60 * 1000)) {
                     const data = await (await fetch("https://discord.com/api/invites/DFyFhtESq9")).json()
 
                     localStorage.setItem("avatarUrl", "https://cdn.discordapp.com/avatars/" + data.inviter.id + "/" + data.inviter.avatar + ".png")
+                    localStorage.setItem("iconUrl", "https://cdn.discordapp.com/icons/" + data.guild.id + "/" + data.guild.icon + ".png")
                     localStorage.setItem("lastFetch", now)
                 }
 
                 avatarUrl = localStorage.getItem("avatarUrl")
+                iconUrl = localStorage.getItem("iconUrl")
 
                 avatar.src = avatarUrl
+                icon.src = iconUrl
+                discord_icon.src = iconUrl
             })()
         </script>
     </body>
