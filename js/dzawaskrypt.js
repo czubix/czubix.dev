@@ -27,8 +27,7 @@ const links = {
     cenzura: "https://cenzura.poligon.lgbt",
     steam: "https://steamcommunity.com/id/czub1x",
     roblox: "https://www.roblox.com/users/2480082516/profile",
-    korrumzthegame: "https://korrumzthegame.wtf",
-    onlyfans: "https://onlyfans.com/czubix"
+    korrumzthegame: "https://korrumzthegame.wtf"
 }
 
 for (let key in links) {
