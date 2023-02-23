@@ -32,7 +32,7 @@ a, span {
 }
 
 .background {
-    background-image: linear-gradient(to bottom, #d261a5 14.28%, #e4afcd 14.28%, #e4afcd 28.56%, #fefefe 28.56%, #fefefe 42.83%, #58cef8 42.83%, #58cef8 57.12%, #fefefe 57.12%, #fefefe 71.39%, #e4afcd 71.39%, #e4afcd 85.67%, #d261a5, 85.67%, #d261a5 100%);
+    background-image: linear-gradient(to bottom, #4fa5c2 0%, #4fa5c2 20%, #f587ac 20%, #f587ac 40%, #f9fbfc 40%, #f9fbfc 60%, #f587ac 60%, #f587ac 80%, #4fa5c2 80%, #4fa5c2 100%);
     background-size: 100% 100%;
     width: 1000px;
     height: 200px;
