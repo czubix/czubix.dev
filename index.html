@@ -90,7 +90,7 @@
                 if (!localStorage.getItem("avatarUrl") || (parseInt(now - localStorage.getItem("lastFetch")) > 5 * 60 * 1000)) {
                     const data = await (await fetch("https://discord.com/api/invites/DFyFhtESq9")).json()
 
-                    localStorage.setItem("avatarUrl", "https://cdn.discordapp.com/avatars/" + data.inviter.id + "/" + data.inviter.avatar + ".png")
+                    localStorage.setItem("avatarUrl", "https://cdn.discordapp.com/avatars/" + data.inviter.id + "/" + data.inviter.avatar + ".png?size=1024")
                     localStorage.setItem("iconUrl", "https://cdn.discordapp.com/icons/" + data.guild.id + "/" + data.guild.icon + ".png")
                     localStorage.setItem("lastFetch", now)
                 }
