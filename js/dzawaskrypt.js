@@ -22,9 +22,10 @@ function goTo(id) {
 const links = {
     youtube: "https://www.youtube.com/channel/UCIINaeuHEOTmzEk0RvIprNQ",
     github: "https://github.com/CZUBIX",
+    poligonteam: "https://github.com/PoligonTeam",
     discord: "https://discord.com/users/636096693712060416",
     discord_poligon: "https://discord.gg/DFyFhtESq9",
-    cenzura: "https://cenzura.poligon.lgbt",
+    fembot: "https://cenzura.poligon.lgbt",
     steam: "https://steamcommunity.com/id/czub1x",
     roblox: "https://www.roblox.com/users/2480082516/profile",
     korrumzthegame: "https://ktg.poligon.lgbt"

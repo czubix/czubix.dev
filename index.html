@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="styles/style.css">
-        <title>czubix</title>
-        <meta name="theme-color" content="#ffc0cb">
+        <meta name="theme-color" content="#f587ac">
+        <title>czubix.pics</title>
+        <meta property="og:site_name" content="czubix.pics">
         <meta property="og:title" content="czubix">
+        <meta property="og:description" context="my ~uwu *sweats* pics :3> (・`ω´・) >.< *looks at you* o((>ω< ))o *notices buldge* ~nya">
         <meta name="viewport" content="initial-scale=0.3">
     </head>
     <body>
@@ -15,18 +17,21 @@
                     <img width="200" height="200" src="https://cdn.discordapp.com/embed/avatars/4.png" alt="zdjęcie profilowe" ondragstart="return false;" ondrop="return false;">
                     <img width="35" height="35" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="poligon" onclick="goTo('discord_poligon');" ondragstart="return false;" ondrop="return false;">
                 </div>
-                <div class="username">czubix<div class="discriminator">#7679</div></div>
+                <div class="username"></div>
             </div>
             <div class="buttons">
-                <div id="aboutme_button" onclick="select('aboutme');" enabled="true">O mnie</div>
-                <div id="links_button" onclick="select('links');" enabled="false">Linki</div>
+                <div id="aboutme_button" onclick="select('aboutme');" enabled="true">About me</div>
+                <div id="links_button" onclick="select('links');" enabled="false">Links</div>
             </div>
             <hr>
             <div class="descriptions">
                 <div id="aboutme">
                     <div><span style="background-color:#2f3136;color:#dcddde;">[she/her]</span></div>
-                    <div>Szymon, 16 lat, mieszkam w Poznaniu. Właściciel serwera <span onclick="goTo('discord_poligon');">poligon</span> i bota <span onclick="goTo('cenzura');">CENZURA</span>. Ucze sie programingowania</div>
-                    <div>od 4 lat, gaminguje w <span onclick="goTo('roblox');">roblok</span> i genshin impact i conter strik i inne gówno</div>
+                    <div>Karolina, 16, I live in Poznań. Owner of <span onclick="goTo('discord_poligon')">poligon</span> and <span onclick="goTo('fembot')">fembot</span> on discord.</div>
+                    <div>I've been programming for over 5 years. My favorite games are <span onclick="goTo('roblox')">korblox</span>, Minecraft and Genshin Impact.</div>
+                    <div>Huge fan of <b>the gothic series</b>.</div>
+                    <br>
+                    <div>Developer @ <span onclick="goTo('poligonteam')">PoligonTeam</span></div>
                 </div>
                 <div id="links">
                     <div>
@@ -37,35 +42,40 @@
                         </div>
                         <div id="github">
                             <img width="32" height="32" src="img/github.png" alt="github" ondragstart="return false;" ondrop="return false;">
-                            <div class="links_username">CZUBIX</div>
+                            <div class="links_username">czubix</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
+                        <div id="poligonteam">
+                            <img width="32" height="32" src="img/github.png" alt="github" ondragstart="return false;" ondrop="return false;">
+                            <div class="links_username">PoligonTeam</div>
+                            <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
+                        </div>
+                    </div>
+                    <div>
                         <div id="discord">
                             <img width="32" height="32" src="img/discord.png" alt="discord" ondragstart="return false;" ondrop="return false;">
                             <div class="links_username">czubix</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
-                    </div>
-                    <div>
                         <div id="discord_poligon">
-                            <img width="32" height="32" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="discord_poligon" style="border-radius:50%;" return false;" ondrop="return false;">
+                            <img width="32" height="32" src="https://cdn.discordapp.com/embed/avatars/1.png" alt="discord_poligon" style="border-radius:50%;" ondrop="return false;">
                             <div class="links_username">poligon</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
-                        <div id="cenzura">
-                            <img width="32" height="32" src="img/cenzura.png" alt="cenzura" ondragstart="return false;" ondrop="return false;">
-                            <div class="links_username">CENZURA</div>
+                        <div id="fembot">
+                            <img width="32" height="32" src="img/fembot.png" alt="fembot" ondragstart="return false;" ondrop="return false;">
+                            <div class="links_username">fembot</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
+                    </div>
+                    <div>
                         <div id="steam">
                             <img width="32" height="32" src="img/steam.png" alt="steam" style="border-radius:50%;" ondragstart="return false;" ondrop="return false;">
                             <div class="links_username">czubix</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
-                    </div>
-                    <div>
                         <div id="roblox">
-                            <img width="32" height="32" src="img/roblox.png" alt="roblox style="border-radius:50%;" ondragstart="return false;" ondrop="return false;">
+                            <img width="32" height="32" src="img/roblox.png" alt="roblox" style="border-radius:50%;" ondragstart="return false;" ondrop="return false;">
                             <div class="links_username">czub1x</div>
                             <img width="16" height="16" src="img/goto.png" alt="goto" ondragstart="return false;" ondrop="return false;">
                         </div>
@@ -81,6 +91,7 @@
         <script src="js/dzawaskrypt.js"></script>
         <script>
             (async () => {
+                const username = document.querySelector(".username")
                 const avatar = document.querySelector(".avatar > img")
                 const icon = document.querySelector(".avatar > img:last-child")
                 const discord_icon = document.querySelector("#discord_poligon > img")
@@ -90,17 +101,22 @@
                 if (!localStorage.getItem("avatarUrl") || (parseInt(now - localStorage.getItem("lastFetch")) > 5 * 60 * 1000)) {
                     const data = await (await fetch("https://discord.com/api/invites/DFyFhtESq9")).json()
 
+                    localStorage.setItem("username", data.inviter.username)
+                    localStorage.setItem("discriminator", data.inviter.discriminator)
                     localStorage.setItem("avatarUrl", "https://cdn.discordapp.com/avatars/" + data.inviter.id + "/" + data.inviter.avatar + ".png?size=1024")
                     localStorage.setItem("iconUrl", "https://cdn.discordapp.com/icons/" + data.guild.id + "/" + data.guild.icon + ".png")
                     localStorage.setItem("lastFetch", now)
                 }
 
-                avatarUrl = localStorage.getItem("avatarUrl")
-                iconUrl = localStorage.getItem("iconUrl")
+                document.title = localStorage.getItem("username")
+                username.innerHTML = localStorage.getItem("username") + "<div class=\"discriminator\">#</div>"
 
-                avatar.src = avatarUrl
-                icon.src = iconUrl
-                discord_icon.src = iconUrl
+                const discriminator = document.querySelector(".discriminator")
+
+                discriminator.innerHTML += localStorage.getItem("discriminator")
+                avatar.src = localStorage.getItem("avatarUrl")
+                icon.src = localStorage.getItem("iconUrl")
+                discord_icon.src = localStorage.getItem("iconUrl")
             })()
         </script>
     </body>

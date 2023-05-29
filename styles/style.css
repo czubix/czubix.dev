@@ -7,10 +7,6 @@ body {
     height: 100vh;
     margin: 0;
     display: flex;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
     user-select: none;
     color: white;
     font-family: "Poppins", sans-serif;
@@ -72,7 +68,7 @@ a, span {
 .username {
     font-size: 40px;
     display: inline-block;
-    margin-top: 120px;
+    margin-top: 111px;
     position: fixed;
     color: #fff;
     text-shadow: -1px -1px 0 #18191c, 1px -1px 0 #18191c, -1px 1px 0 #18191c, 1px 1px 0 #18191c;
