@@ -23,7 +23,7 @@ const links = {
     youtube: "https://www.youtube.com/channel/UCIINaeuHEOTmzEk0RvIprNQ",
     github: "https://github.com/CZUBIX",
     poligonteam: "https://github.com/PoligonTeam",
-    discord: "https://discord.com/users/636096693712060416",
+    twitter: "https://twitter.com/@czubix6",
     discord_poligon: "https://discord.gg/DFyFhtESq9",
     fembot: "https://cenzura.poligon.lgbt",
     steam: "https://steamcommunity.com/id/czub1x",
