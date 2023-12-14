@@ -48,6 +48,11 @@ a, span {
 .avatar > img:first-of-type {
     border: 10px solid #18191c;
     margin: 45px;
+    transition-duration: 1s;
+}
+
+.avatar > img:first-of-type:hover {
+    transform: rotate(360deg);
 }
 
 .avatar > img:last-of-type {
