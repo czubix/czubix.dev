@@ -16,7 +16,7 @@ z = {
 
 join((z.a, z.b), "\\n")`
 
-require.config({ paths: { vs: "monaco-editor/min/vs" } })
+require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs" } })
 
 function getValue(token) {
     let value = ""
