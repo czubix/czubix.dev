@@ -1,20 +1,19 @@
-import init, { execute_code } from "./femscript_wasm.js"
+import init, { execute_code, JsVariable } from "./femscript_wasm.js"
+import { jsToRust } from "./utils.js"
 
-const example = `fn map_fn(i) {
-    format("meow {}", str(69 + i))
+const example = `fn is_this_number_meow(num) {
+    if { num > 0.5 } {
+        "meow"
+    } else {
+        "not meow"
+    }
 }
 
-x = [random(), random()];
-y = map(x, "map_fn");
+log(is_this_number_meow(random()));
+log(is_this_number_meow(random()));
+log(is_this_number_meow(random()));
 
-z = {
-    borrow(y);
-
-    a = &y.0;
-    b = &y.1;
-};
-
-join((z.a, z.b), "\\n")`
+info`
 
 require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs" } })
 
@@ -23,7 +22,7 @@ function getValue(token) {
 
     switch (token._type) {
         case "Str":
-            value = token.value
+            value = "\"" + token.value + "\""
             break
         case "Int":
             value = "" + token.number
@@ -38,7 +37,7 @@ function getValue(token) {
             value = "[" + token.list.map(token => getValue(token)).join(", ") + "]"
             break
         case "Scope":
-            value = "{" + token.scope.map(variable => `${variable.name} = ${getValue(variable.value)}`).join(";") + "}"
+            value = "{" + token.scope.map(variable => `${variable.name}=${getValue(variable.value)}`).join(";") + "}"
             break
         case "Error":
         case "Undefined":
@@ -129,7 +128,8 @@ require(["vs/editor/editor.main"], async function() {
         value: example,
         language: "femscript",
         theme: "femscript-theme",
-        minimap: { enabled: false }
+        minimap: { enabled: false },
+        scrollBeyondLastLine: false
     })
 
     let result = monaco.editor.create(document.getElementById("result"), {
@@ -142,11 +142,56 @@ require(["vs/editor/editor.main"], async function() {
             horizontal: "hidden"
         },
         wordWrap: "on",
-        lineNumbers: "off"
+        lineNumbers: "off",
+        scrollBeyondLastLine: false
     })
 
+    let results = []
+
+    window._femscript_builtins = {
+        random: Math.random,
+        log: (value) => {
+            function stringify(value, in_scope) {
+                let str
+
+                if (Array.isArray(value)) {
+                    str = "[" + value.map(value => stringify(value)).join(", ") + "]"
+                } else if (value === null) {
+                    str = "none"
+                } else if (typeof value === "object") {
+                    str = "{" + Object.entries(value).map(value => `${value[0]}=${stringify(value[1], true)}`).join(";") + "}"
+                } else {
+                    if (in_scope) {
+                        str = "\"" + value.toString() + "\""
+                    } else {
+                        str = value.toString()
+                    }
+                }
+
+                return str
+            }
+
+            results.push(stringify(value))
+
+            return null
+        }
+    }
+
+    const getVariables = () => {
+        return [
+            new JsVariable("info", jsToRust({
+                github: "https://github.com/czubix/femscript",
+                discord: "https://discord.gg/DFyFhtESq9"
+            }))
+        ]
+    }
+
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
-        result.setValue(getValue(execute_code(editor.getValue().replace(/\r/g, ""))))
+        results = []
+        result.setValue(getValue(execute_code(editor.getValue().replace(/\r/g, ""), getVariables(), Object.keys(window._femscript_builtins).concat(["debug"]))))
+        if (results.length) {
+            result.setValue(results.join("\n") + "\n\n" + result.getValue())
+        }
     })
 
     femscript.style.display = "none"
