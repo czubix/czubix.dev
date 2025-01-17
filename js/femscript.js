@@ -1,4 +1,4 @@
-import init, { execute_code, JsVariable } from "./femscript_wasm.js"
+import init, { execute_code, check_syntax, JsVariable } from "./femscript_wasm.js"
 import { jsToRust } from "./utils.js"
 
 const example = `fn is_this_number_meow(num) {
@@ -186,9 +186,27 @@ require(["vs/editor/editor.main"], async function() {
         ]
     }
 
+    editor.onDidChangeModelContent(() => {
+        const model = editor.getModel()
+
+        monaco.editor.setModelMarkers(editor.getModel(), "femscript", check_syntax(editor.getValue()).map(({ pos, value }) => {
+            const start = model.getPositionAt(pos[0])
+            const end = model.getPositionAt(pos[1])
+
+            return {
+                message: value,
+                startLineNumber: start.lineNumber,
+                startColumn: start.column,
+                endLineNumber: end.lineNumber,
+                endColumn: end.column,
+                severity: monaco.MarkerSeverity.Error
+            }
+        }))
+    })
+
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
         results = []
-        result.setValue(getValue(execute_code(editor.getValue().replace(/\r/g, ""), getVariables(), Object.keys(window._femscript_builtins).concat(["debug"]))))
+        result.setValue(getValue(execute_code(editor.getValue(), getVariables(), Object.keys(window._femscript_builtins).concat(["debug"]))))
         if (results.length) {
             result.setValue(results.join("\n") + "\n\n" + result.getValue())
         }
