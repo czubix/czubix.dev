@@ -26,12 +26,12 @@ const links = {
     youtube: "https://www.youtube.com/channel/UCIINaeuHEOTmzEk0RvIprNQ",
     github: "https://github.com/czubix",
     poligonteam: "https://github.com/PoligonTeam",
-    twitter: "https://twitter.com/@czubix6",
+    x: "https://x.com/@czubix6",
     discord_poligon: "https://discord.gg/DFyFhtESq9",
     fembot: "https://cenzura.poligon.lgbt",
     steam: "https://steamcommunity.com/id/czub1x",
     roblox: "https://www.roblox.com/users/2480082516/profile",
-    korrumzthegame: "https://ktg.poligon.lgbt"
+    anilist: "https://anilist.co/user/czubix"
 }
 
 for (let key in links) {
