@@ -1,19 +1,32 @@
 import init, { execute_code, check_syntax, JsVariable } from "./femscript_wasm.js"
 import { jsToRust } from "./utils.js"
 
-const example = `fn is_this_number_meow(num) {
-    if { num > 0.5 } {
-        "meow"
-    } else {
-        "not meow"
-    }
+const example = `fn get_quote() {
+    quotes = [
+        "\\"The self is an illusion - it is a model created by the brain to simplify our experience of the world.\\" - Thomas Metzinger",
+        "\\"Consciousness is not a thing but a process that emerges from the interactions of a complex system.\\" - Daniel Dennett",
+        "\\"The hard problem of consciousness is not understanding how the brain works, but understanding why and how it feels to be conscious.\\" - David Chalmers",
+        "\\"You, your joys and your sorrows, your memories and your ambitions, your sense of personal identity and free will, are in fact no more than the behavior of a vast assembly of nerve cells and their associated molecules.\\" - Francis Crick",
+        "\\"We are survival machines - robot vehicles blindly programmed to preserve the selfish molecules known as genes.\\" - Richard Dawkins",
+        "\\"I think, therefore I am... but I am only a product of evolution, creating the illusion of existence.\\"",
+        "\\"Just like AI may simulate consciousness, my 'self' is only a simulation created by my mind to function better in this world.\\"",
+        "\\"Consciousness is not a gift, but a byproduct of biological processes - an illusion that helps me make sense of my experience.\\""
+    ];
+
+    quotes_length = len(quotes);
+    index = quotes_length * random();
+    quote = get(quotes, index);
+
+    return quote;
 }
 
-log(is_this_number_meow(random()));
-log(is_this_number_meow(random()));
-log(is_this_number_meow(random()));
+log(get_quote());
 
-info`
+if { 0.5 > random() } {
+    "meow"
+} else {
+    "not meow"
+}`
 
 require.config({ paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.52.2/min/vs" } })
 
@@ -177,15 +190,6 @@ require(["vs/editor/editor.main"], async function() {
         }
     }
 
-    const getVariables = () => {
-        return [
-            new JsVariable("info", jsToRust({
-                github: "https://github.com/czubix/femscript",
-                discord: "https://discord.gg/DFyFhtESq9"
-            }))
-        ]
-    }
-
     editor.onDidChangeModelContent(() => {
         const model = editor.getModel()
 
@@ -206,7 +210,7 @@ require(["vs/editor/editor.main"], async function() {
 
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
         results = []
-        result.setValue(getValue(execute_code(editor.getValue(), getVariables(), Object.keys(window._femscript_builtins).concat(["debug"]))))
+        result.setValue(getValue(execute_code(editor.getValue(), [], Object.keys(window._femscript_builtins).concat(["debug"]))))
         if (results.length) {
             result.setValue(results.join("\n") + "\n\n" + result.getValue())
         }
