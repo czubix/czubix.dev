@@ -66,7 +66,7 @@ function getValue(token) {
     return value
 }
 
-require(["vs/editor/editor.main"], async function() {
+require(["vs/editor/editor.main"], async function () {
     await init()
 
     monaco.languages.register({ id: "femscript" })
@@ -75,7 +75,7 @@ require(["vs/editor/editor.main"], async function() {
         tokenizer: {
             root: [
                 [/#.*/, "comment"],
-                [/-?\b\d+(\.\d+)?/ , "number"],
+                [/-?\b\d+(\.\d+)?/, "number"],
                 [/true|false/, "boolean"],
                 [/none|;/, "none"],
                 [/"([^"\\]|\\.)*$/, "string.invalid"],
@@ -215,6 +215,6 @@ require(["vs/editor/editor.main"], async function() {
             result.setValue(results.join("\n") + "\n\n" + result.getValue())
         }
     })
-
-    femscript.style.display = "none"
 })
+
+window.editor = editor

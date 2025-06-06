@@ -4,14 +4,16 @@ body {
     background-color: #202225;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 10px;
     display: flex;
     user-select: none;
     color: white;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    overflow: hidden;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 a, span {
@@ -19,61 +21,112 @@ a, span {
     text-decoration: none;
 }
 
+
+span:hover {
+    cursor: pointer;
+}
+
+#links > div {
+    cursor:pointer
+}
+
 .box {
-    width: 1000px;
-    height: 600px;
+    max-width: 1000px;
+    width: 100%;
+    height: auto;
+    min-height: 600px;
     background-color: #18191c;
     border-radius: 7px;
+    position: relative;
 }
 
 .background {
     background-image: linear-gradient(to bottom, #4fa5c2 0%, #4fa5c2 20%, #f587ac 20%, #f587ac 40%, #f9fbfc 40%, #f9fbfc 60%, #f587ac 60%, #f587ac 80%, #4fa5c2 80%, #4fa5c2 100%);
     background-size: 100% 100%;
-    width: 1000px;
+    width: 100%;
     height: 200px;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     box-shadow: none;
 }
 
+.profile-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px 50px;
+    margin-top: -120px;
+    margin-bottom: -60px;
+    z-index: 5;
+}
+
 .avatar {
     display: inline-block;
 }
 
-.avatar > img {
+.avatar-container {
+    position: relative;
+    display: inline-block;
+    z-index: 10;
+}
+
+
+.avatar > img,
+.avatar-container > img {
     border-radius: 50%;
 }
 
-.avatar > img:first-of-type {
-    border: 10px solid #18191c;
-    margin: 45px;
+.main-avatar {
+    width: 120px;
+    height: 120px;
+    border: 8px solid #18191c;
+    border-radius: 50%;
+    object-fit: cover;
     transition-duration: 1s;
 }
 
-.avatar > img:first-of-type:hover {
+.avatar-container:hover .main-avatar {
     transform: rotate(360deg);
 }
 
-.avatar > img:last-of-type {
-    height: 35px;
-    width: 35px;
-    background-color: rgba(0, 0, 0, 1);
-    position: fixed;
-    border: 10px solid #18191c;
-    transform: translate(-110px, 210px);
-    transition: all .2s;
+.avatar-decoration {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    border-radius: 0 !important;
+    z-index: 2;
+    width: 130px;
+    height: 130px;
+    pointer-events: none;
 }
 
-.avatar > img:last-of-type:hover {
-    height: 38px;
-    width: 38px;
+.status-icon {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 1);
+    position: absolute;
+    border: 6px solid #18191c;
+    border-radius: 50%;
+    bottom: 8px;
+    right: 8px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.status-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.status-icon:hover {
+    height: 32px;
+    width: 32px;
 }
 
 .username {
     font-size: 40px;
-    display: inline-block;
-    margin-top: 111px;
-    position: fixed;
+    margin-left: 20px;
     color: #fff;
     text-shadow: -1px -1px 0 #18191c, 1px -1px 0 #18191c, -1px 1px 0 #18191c, 1px 1px 0 #18191c;
 }
@@ -85,16 +138,16 @@ a, span {
 }
 
 hr {
-    margin-top: 120px;
+    margin-top: 20px;
     color: rgb(59, 59, 59);
 }
 
 .buttons {
-    position: fixed;
+    position: relative;
 }
 
 .buttons > * {
-    margin-top: 90px;
+    margin-top: 40px;
     display: inline-block;
     font-weight: 400;
     padding-left: 50px;
@@ -108,6 +161,7 @@ hr {
 
 .buttons > *:hover {
     color: #fff;
+    cursor: pointer;
 }
 
 .descriptions > * {
@@ -119,46 +173,49 @@ hr {
 #links {
     display: none;
     font-size: 20px;
+    padding: 0 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+#links[style*="block"] {
+    display: grid;
 }
 
 #links > div {
-    margin-bottom: 10px;
-}
-
-#links > * > * {
     border: 1.5px solid rgb(59, 59, 59);
-    width: 290px;
     height: 50px;
     border-radius: 3px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    vertical-align: top;
-    margin-left: 10px;
+    justify-content: space-between;
+    padding: 0 15px;
     transition: all .2s;
     font-size: 17px;
+    background-color: transparent;
 }
 
-#links > * > *:first-of-type {
-    margin-left: 0px;
-}
-
-#links > * > *:hover {
+#links > div:hover {
     background-color: #202225;
 }
 
-#links > * > * > * {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 10px;
+#links > div > img:first-child {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
 }
 
-#links > * > * > img:last-of-type {
-    margin-left: auto;
+#links > div > .links_username {
+    flex-grow: 1;
+    margin-left: 15px;
+    text-align: left;
 }
 
-#links > * > * > img:last-of-type:hover {
-    cursor: pointer;
+#links > div > img:last-child {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
 }
 
 .links_username:hover {
@@ -175,4 +232,207 @@ hr {
     height: 230px;
     width: 200px;
     float: left;
+}
+
+#clanTag {
+    margin-left: 15px;
+    background-color: #18191c;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+    .box {
+        max-width: 95%;
+        margin: 10px;
+    }
+
+    .username {
+        font-size: 32px;
+    }
+
+    #links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    #links > div {
+        height: 45px;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+
+    .box {
+        min-height: auto;
+        max-width: 100%;
+    }
+
+    .background {
+        height: 150px;
+    }
+
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        margin-top: -100px;
+        margin-bottom: -20px;
+    }
+
+    .main-avatar {
+        width: 100px;
+        height: 100px;
+        border: 6px solid #18191c;
+    }
+
+    .avatar-decoration {
+        top: -6px;
+        left: -6px;
+        width: 112px;
+        height: 112px;
+    }
+
+    .status-icon {
+        bottom: 5px;
+        right: 5px;
+        height: 25px;
+        width: 25px;
+        border: 4px solid #18191c;
+    }
+
+    .username {
+        font-size: 24px;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .discriminator {
+        text-align: center;
+        display: block;
+        padding: 0 20px;
+    }
+
+    .buttons > * {
+        margin-top: 20px;
+        padding-left: 20px;
+        font-size: 14px;
+    }
+
+    .descriptions > * {
+        padding-left: 20px;
+        font-size: 14px;
+    }
+
+    #links {
+        font-size: 16px;
+        padding: 0 10px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    #links > div {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    #links > div > img:first-child {
+        width: 28px;
+        height: 28px;
+    }
+
+    #links > div > img:last-child {
+        width: 14px;
+        height: 14px;
+    }
+
+    #editor {
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+
+    #result {
+        width: 100%;
+        height: 200px;
+        float: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #clanTag {
+        margin-left: 0;
+        padding: 5px 8px;
+    }
+
+    .profile-section {
+        margin-top: -80px;
+        padding: 15px;
+        margin-bottom: -30px;
+    }
+
+    .main-avatar {
+        width: 80px;
+        height: 80px;
+        border: 4px solid #18191c;
+    }
+
+    .avatar-decoration {
+        top: -4px;
+        left: -4px;
+        width: 88px;
+        height: 88px;
+    }
+
+    .status-icon {
+        bottom: 2px;
+        right: 2px;
+        height: 20px;
+        width: 20px;
+        border: 3px solid #18191c;
+    }
+
+    .username {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .background {
+        height: 120px;
+    }
+
+    .buttons > * {
+        margin-top: 30px;
+        padding-left: 15px;
+        font-size: 13px;
+    }
+
+    .descriptions > * {
+        padding-left: 15px;
+        font-size: 13px;
+    }
+
+    #links {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    #links > div {
+        height: 35px;
+        font-size: 13px;
+    }
+
+    #links > div > img:first-child {
+        width: 24px;
+        height: 24px;
+    }
+
+    #links > div > img:last-child {
+        width: 12px;
+        height: 12px;
+    }
 }
