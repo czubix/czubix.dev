@@ -143,11 +143,11 @@ hr {
 }
 
 .buttons {
+    margin-top: 50px;
     position: relative;
 }
 
 .buttons > * {
-    margin-top: 40px;
     display: inline-block;
     font-weight: 400;
     padding-left: 50px;
@@ -317,8 +317,11 @@ hr {
         padding: 0 20px;
     }
 
+    .buttons {
+        margin-top: 40px;
+    }
+
     .buttons > * {
-        margin-top: 20px;
         padding-left: 20px;
         font-size: 14px;
     }
